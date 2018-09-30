@@ -14,6 +14,7 @@ const enhancer = compose(applyMiddleware(thunk, reduxRouterMiddleware, middlewar
 
 export default initialState => {
   let store = createStore(persistedReducer, initialState, enhancer);
-  let persistor = persistStore(store); // .purge() to clear
+  let persistor = persistStore(store); 
+  // persistor.purge()
   return { store, persistor, history };
 };

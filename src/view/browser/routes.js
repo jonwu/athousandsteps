@@ -1,4 +1,4 @@
-import Home from 'view/browser/home/Home';
+import Home from 'view/browser/screens/HomeScreen';
 
 const routes = [
   {

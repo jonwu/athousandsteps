@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Browser from './browser/app/App';
+import Browser from 'view/browser/Root';
 import Mobile from './mobile/app/App';
 
 export default class Platform extends React.Component {

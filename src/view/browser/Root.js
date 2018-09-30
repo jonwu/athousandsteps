@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import Radium from 'radium';
 import { View, RouteWithSubRoutes } from 'view/global/components';
 import { generateStylesSelector } from 'view/global/utils/selectors';
-import routes from './routes';
+import routes from 'view/browser/routes';
 
 function generateStyles(theme) {
   return {}
