@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import Radium from 'radium';
 import { View } from 'view/global/components';
 import StepNoteOptions from 'view/browser/steps/StepNoteOptions';
-import StepNodeParent from 'view/browser/steps/StepNodeParent';
+import StepNodeController from 'view/browser/steps/StepNodeController';
 
 class Home extends Component {
   constructor(props) {
@@ -11,11 +11,11 @@ class Home extends Component {
   }
   render() {
     const { gstyles, theme, styles } = this.props;
+    
     return (
       <View style={{backgroundColor: theme.bg(), flex: 1}}>
-        <div style={[gstyles.h1_bold, { color: theme.text() }]}>How do you feel?</div>
-        <StepNoteOptions/>
-        <StepNodeParent/>    
+        <StepNoteOptions />
+        <StepNodeController />
         {/* 
           List of Root Node
             - prefix

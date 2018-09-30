@@ -9,7 +9,16 @@ class StepNode extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      localResponse: props.node.prefix + " ",
+      localResponse: props.response,
+    }
+  }
+  static getDerivedStateFromProps(props, state) {
+    console.log("in here")
+    if (props.node !== state.node) {
+      return {
+        node: props.node,
+        localResponse: props.node.response || '',
+      }
     }
   }
   onSubmit = (e) => {
@@ -25,6 +34,7 @@ class StepNode extends Component {
     // if (nodeIndex === nodesLength - 1) {
       addNode({
         prefix: PREFIX.BECAUSE,
+        prev: updatedNode.response,
         challenge: CHALLENGE.WHY,
         active: true,
       });
@@ -37,13 +47,13 @@ class StepNode extends Component {
     if (node.active) this.input.focus()
   }
   render() {
-    const { gstyles, theme, node, fontSize } = this.props;
+    const { gstyles, theme, node, fontSize, showAll } = this.props;
     const { localResponse } = this.state;
 
     return (
       <View style={{
         flex: 1,
-        backgroundColor: node.active ? theme.red() : theme.blue(0.5),
+        backgroundColor: node.active ? theme.red(0.75) : theme.blue(0.5),
         padding: theme.spacing_1,
         borderRadius: theme.borderRadius,
         margin: theme.spacing_2,
@@ -53,21 +63,21 @@ class StepNode extends Component {
       }}>
         {node.active ? 
         <form style={{width: '100%'}} onSubmit={this.onSubmit}>
-          <View row style={{width: '100%'}}>
-            <input
-              style={[gstyles.h4, {
-                border: 'none',
-                flex: 1,
-                outline: 0,
-                background: 'transparent',
-                fontSize: fontSize,
-                color: theme.light(),
-                textAlign: 'center',
-              }]}
-              ref={input => this.input = input}
-              value={localResponse}
-              onChange={(e) => this.setState({ localResponse: e.target.value })} />
-          </View>
+          <input
+            style={[{
+              border: 'none',
+              width: '100%',
+              outline: 0,
+              background: 'transparent',
+              fontSize: fontSize,
+              fontFamily: 'Brandon',
+              color: theme.light(),
+              textAlign: 'center',
+            }]}
+            ref={input => this.input = input}
+            value={localResponse}
+            placeholder={node.prev && `${node.prev}`}
+            onChange={(e) => this.setState({ localResponse: e.target.value })} />
         </form>
         : <div style={[{ fontSize: fontSize, color: theme.text() }]}>{node.response}</div>
         }

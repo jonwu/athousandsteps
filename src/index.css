@@ -1,9 +1,26 @@
+@font-face {
+  font-family: Brandon;
+  src: url('./view/global/assets/fonts/Brandon_light.otf') format('opentype');
+  font-style: normal;
+}
+@font-face {
+  font-family: Brandon-Med;
+  src: url('./view/global/assets/fonts/Brandon_reg.otf') format('opentype');
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Brandon;
+  src: url('./view/global/assets/fonts/Brandon_bld.otf') format('opentype');
+  font-weight: bold;
+}
+
 html {
   height: 100%;
   width: 100%;
 }
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Brandon, Arial, Helvetica, sans-serif;
   height: 100%;
   width: 100%;
   padding: 0;
@@ -15,3 +32,11 @@ body {
 }
 
 textarea, select, input, button { outline: none; }
+
+input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.hvr-white:hover {
+  color: white !important; 
+}

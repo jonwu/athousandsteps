@@ -21,9 +21,6 @@ const computeColumnNodes = (nodes, rowSize = ROW_SIZE) => {
 }
 
 class StepNodeParent extends Component {
-	constructor(props) {
-		super(props);
-	}
 
 	static getDerivedStateFromProps(props, state) {
 		if (props.nodes !== state.nodes) {
@@ -37,7 +34,7 @@ class StepNodeParent extends Component {
 
 	render() {
 		const { gstyles, theme, nodes } = this.props;
-		const { columnNodes } = this.state;
+		const { columnNodes, showAll } = this.state;
 		const fontSize = Math.max(100 / nodes.length, theme.H4);
 		return (
 			<View style={{ flex: 1, flexDirection: 'column-reverse' }}>
@@ -45,7 +42,13 @@ class StepNodeParent extends Component {
 					return <View key={x} row style={{ flex: 1, flexDirection: 'row-reverse' }}>
 						{column.map((node, y) => {
 							const nodeIndex = x * ROW_SIZE + y;
-							return <StepNode key={nodeIndex} node={node} nodeIndex={nodeIndex} nodesLength={nodes.length} fontSize={fontSize} />
+							return <StepNode 
+								key={nodeIndex}
+								node={node}
+								nodeIndex={nodeIndex}
+								nodesLength={nodes.length}
+								fontSize={fontSize}
+							/>
 						})}
 					</View>
 				})}
