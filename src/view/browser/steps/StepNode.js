@@ -13,7 +13,6 @@ class StepNode extends Component {
     }
   }
   static getDerivedStateFromProps(props, state) {
-    console.log("in here")
     if (props.node !== state.node) {
       return {
         node: props.node,

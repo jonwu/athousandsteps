@@ -13,7 +13,6 @@ class StepNodeController extends Component {
   render() {
     const { gstyles, theme, lastNode, nodeLength } = this.props;
     const { showAll } = this.state;
-    console.log(lastNode)
     return (
       <View style={{ flex: 1, marginLeft: 100, marginBottom: 100, marginRight: 100 }}>
         <View style={{ height: 100, justifyContent: 'center'}}>
