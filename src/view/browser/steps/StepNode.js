@@ -9,7 +9,7 @@ class StepNode extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      localResponse: props.node.localResponse,
+      localResponse: props.node.prefix + " ",
     }
   }
   onSubmit = (e) => {
@@ -22,32 +22,55 @@ class StepNode extends Component {
     });
 
     updateNode(nodeIndex, updatedNode);
-    if (nodeIndex === nodesLength - 1) {
+    // if (nodeIndex === nodesLength - 1) {
       addNode({
         prefix: PREFIX.BECAUSE,
         challenge: CHALLENGE.WHY,
         active: true,
       });
-    }
+    // }
 
     e.preventDefault();
   }
+  componentDidMount() {
+    const { node } = this.props;
+    if (node.active) this.input.focus()
+  }
   render() {
-    const { gstyles, theme, node } = this.props;
+    const { gstyles, theme, node, fontSize } = this.props;
     const { localResponse } = this.state;
 
     return (
       <View style={{
         flex: 1,
-        backgroundColor: node.active ? theme.blue() : theme.blue(0.5),
-        padding: theme.spacing_2,
+        backgroundColor: node.active ? theme.red() : theme.blue(0.5),
+        padding: theme.spacing_1,
         borderRadius: theme.borderRadius,
-        margin: theme.spacing_2
+        margin: theme.spacing_2,
+        position: 'relative',
+        justifyContent: 'center',
+        alignItems: 'center',
       }}>
-        <div style={[gstyles.p1, { color: theme.text(0.5) }]}>{node.prefix}</div>
-        <form onSubmit={this.onSubmit}>
-          <input value={localResponse} onChange={(e) => this.setState({ localResponse: e.target.value })} />
+        {node.active ? 
+        <form style={{width: '100%'}} onSubmit={this.onSubmit}>
+          <View row style={{width: '100%'}}>
+            <input
+              style={[gstyles.h4, {
+                border: 'none',
+                flex: 1,
+                outline: 0,
+                background: 'transparent',
+                fontSize: fontSize,
+                color: theme.light(),
+                textAlign: 'center',
+              }]}
+              ref={input => this.input = input}
+              value={localResponse}
+              onChange={(e) => this.setState({ localResponse: e.target.value })} />
+          </View>
         </form>
+        : <div style={[{ fontSize: fontSize, color: theme.text() }]}>{node.response}</div>
+        }
       </View>
     );
   }

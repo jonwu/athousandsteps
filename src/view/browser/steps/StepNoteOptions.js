@@ -8,6 +8,12 @@ import { resetNode } from 'common/reducers/app/actions';
 class StepNodeOptions extends Component {
   constructor(props) {
     super(props);
+    const { resetNode } = props;
+    resetNode({
+      prefix: PREFIX.INSECURITY,
+      challenge: CHALLENGE.WHY,
+      active: true,
+    });
   }
   onCreate = () => {
     const { resetNode } = this.props;
@@ -19,6 +25,7 @@ class StepNodeOptions extends Component {
   }
   render() {
     const { gstyles, theme } = this.props;
+    return null;
     return (
       <View row>
         <View onClick={this.onCreate} style={{

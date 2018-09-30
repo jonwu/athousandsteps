@@ -5,14 +5,14 @@ import { View } from 'view/global/components';
 import StepNode from './StepNode';
 
 
-const ROW_SIZE = 8;
+const ROW_SIZE = 4;
 
 const computeColumnNodes = (nodes, rowSize = ROW_SIZE) => {
 	const nodeLength = nodes.length;
 	const columnNodes = [];
 	let start = 0;
 
-	while (start <= nodeLength) {
+	while (start < nodeLength) {
 		const end = start + rowSize;
 		columnNodes.push(nodes.slice(start, end));
 		start = end;
@@ -38,12 +38,14 @@ class StepNodeParent extends Component {
 	render() {
 		const { gstyles, theme, nodes } = this.props;
 		const { columnNodes } = this.state;
+		const fontSize = Math.max(100 / nodes.length, theme.H4);
 		return (
-			<View style={{ flex: 1 }}>
+			<View style={{ flex: 1, flexDirection: 'column-reverse' }}>
 				{columnNodes.map((column, x) => {
-					return <View key={x} row style={{ flex: 1 }}>
+					return <View key={x} row style={{ flex: 1, flexDirection: 'row-reverse' }}>
 						{column.map((node, y) => {
-							return <StepNode key={x * ROW_SIZE + y} node={node} nodeIndex={x * ROW_SIZE + y} nodesLength={nodes.length} />
+							const nodeIndex = x * ROW_SIZE + y;
+							return <StepNode key={nodeIndex} node={node} nodeIndex={nodeIndex} nodesLength={nodes.length} fontSize={fontSize} />
 						})}
 					</View>
 				})}

@@ -3,7 +3,7 @@ import * as ActionTypes from './actionTypes';
 
 function nodes(state = [], action) {
   switch(action.type) {
-    case ActionTypes.RESET_NODE:
+    case ActionTypes.RESET_NODE:      
       return [action.node] 
     case ActionTypes.ADD_NODE: 
       return [...state, action.node];
