@@ -40,3 +40,6 @@ input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
 .hvr-white:hover {
   color: white !important; 
 }
+.hvr-dark:hover {
+  color: rgba(1, 17, 24, 1) !important; 
+}

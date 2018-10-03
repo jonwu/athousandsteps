@@ -75,7 +75,7 @@ class StepNode extends Component {
             }]}
             ref={input => this.input = input}
             value={localResponse}
-            placeholder={node.prev && `${node.prev}`}
+            placeholder={node.prev && `${node.prev} ...why tho?`}
             onChange={(e) => this.setState({ localResponse: e.target.value })} />
         </form>
         : <div style={[{ fontSize: fontSize, color: theme.text() }]}>{node.response}</div>

@@ -11,10 +11,10 @@ const transform = createTransform(
     switch (key) {
       case 'settings':
         return Object.assign({}, outboundState, {
-          theme: collections[outboundState.theme.id],
+          theme: collections[outboundState.light_theme.id],
           dark_theme: collections[outboundState.dark_theme.id],
           light_theme: collections[outboundState.light_theme.id],
-          gstyles: gstyles(collections[outboundState.theme.id]),
+          gstyles: gstyles(collections[outboundState.light_theme.id]),
           dark_gstyles: gstyles(collections[outboundState.dark_theme.id]),
           light_gstyles: gstyles(collections[outboundState.light_theme.id]),
         });

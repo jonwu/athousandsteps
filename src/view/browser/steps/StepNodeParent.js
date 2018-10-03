@@ -35,11 +35,11 @@ class StepNodeParent extends Component {
 	render() {
 		const { gstyles, theme, nodes } = this.props;
 		const { columnNodes, showAll } = this.state;
-		const fontSize = Math.max(100 / nodes.length, theme.H4);
+		const fontSize = Math.max(100 / nodes.length, theme.H3);
 		return (
-			<View style={{ flex: 1, flexDirection: 'column-reverse' }}>
+			<View style={{ flex: 1 }}>
 				{columnNodes.map((column, x) => {
-					return <View key={x} row style={{ flex: 1, flexDirection: 'row-reverse' }}>
+					return <View key={x} row style={{ flex: 1 }}>
 						{column.map((node, y) => {
 							const nodeIndex = x * ROW_SIZE + y;
 							return <StepNode 

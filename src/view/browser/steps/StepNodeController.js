@@ -16,7 +16,7 @@ class StepNodeController extends Component {
     return (
       <View style={{ flex: 1, marginLeft: 100, marginBottom: 100, marginRight: 100 }}>
         <View style={{ height: 100, justifyContent: 'center'}}>
-          <div onClick={() => this.setState({ showAll: !this.state.showAll })} className={'hvr-white'} style={[gstyles.h2_bold, {
+          <div onClick={() => this.setState({ showAll: !this.state.showAll })} className={theme.hvrTextClassName} style={[gstyles.h2_bold, {
             color: theme.text(0.5),
             alignSelf: 'center',
             cursor: 'pointer',

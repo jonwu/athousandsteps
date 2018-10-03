@@ -3,7 +3,7 @@ import * as ActionTypes from './actionTypes';
 import collections from 'common/utils/themes';
 import generateStyles from 'common/utils/gstyles';
 
-function theme(state = collections[1], action) {
+function theme(state = collections[0], action) {
   switch (action.type) {
     case ActionTypes.UPDATE_THEME:
       return collections[action.key];
@@ -23,7 +23,7 @@ function light_theme(state = collections[0], action) {
       return state;
   }
 }
-function gstyles(state = generateStyles(collections[1]), action) {
+function gstyles(state = generateStyles(collections[0]), action) {
   switch (action.type) {
     case ActionTypes.UPDATE_THEME:
       return generateStyles(collections[action.key]);
